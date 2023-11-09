@@ -4,9 +4,15 @@ import java.util.Scanner;
 
 public class MayorMenorEntre2 {
 
+    static Scanner sc = new Scanner(System.in);
     public static void main(String[] args) {
 
-        Scanner sc = new Scanner(System.in);
+        solucion1();
+        solucion2();
+        sc.close();
+    }
+
+    public static void solucion1(){
 
         System.out.print("Introduce el primer numero: ");
         int num1 = sc.nextInt();
@@ -23,7 +29,15 @@ public class MayorMenorEntre2 {
         } else {
             System.out.println(num2 + " es igual a " + num1);
         }
+    }
 
-        sc.close();
+    public static void solucion2(){
+        System.out.print("Introduce el primer numero: ");
+        int num1 = sc.nextInt();
+
+        System.out.print("Introduce el segundo numero: ");
+        int num2 = sc.nextInt();
+
+        System.out.println(Math.max(num1, num2) + " es el mayor y " + Math.min(num1, num2) + " el menor");
     }
 }

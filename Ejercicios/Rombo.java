@@ -2,55 +2,58 @@ package Ejercicios;
 
 import java.util.Scanner;
 
+/**
+ * @author DFR 1DAM 23-24
+ */
 public class Rombo {
 
     public static void main(String[] args) {
 
         Scanner scn = new Scanner(System.in);
 
-        System.out.println("entra la fila central del rombre");
-        int filaCentral = Math.abs(scn.nextInt());
+        System.out.print("Introduzca el número de líneas desde el inicio hasta la mitad del rombo: ");
+        int eje = scn.nextInt();
 
-        String rombe = creaRombe(filaCentral);
+        /*
+        Tal y como está declarado el rombo en el ejercicio, la línea
+        central constará de n * 2 - 1 almohadillas, que también es el
+        número total de líneas. Así, n es la posición central tanto de
+        forma horizontal como vertical: el eje del rombo.
+        */
 
-        System.out.println(rombe);
-    }
+        int clave = eje * 2 - 1;
 
-    private static String creaRombe(int filaCentral) {
+        // Esta función construye la pirámide
 
-        String rombe = "";
-        int numEspacios = filaCentral - 1;
-        int numX = 1;
-        int files = filaCentral * 2;
+        for (int fil = 0; fil < eje; fil++) {
 
-        for (int fila = 1; fila < files; fila++) {
-            rombe += getLiniaDe(numEspacios, ' ');
-            rombe += getLiniaDe(numX, 'X');
-            rombe += "\n";
+            for (int col = 1; col <= clave; col++) {
 
-            // System.out.println("Fila:" + fila + " numEspacios: " + numEspacios + " numX:
-            // " + numX);
-
-            if (fila < filaCentral) {
-                numEspacios--;
-                numX += 2;
-            } else {
-                numEspacios++;
-                numX -= 2;
+                if ((col < (eje - fil)) || (col > (eje + fil))) {
+                    System.out.print(" ");
+                } else {
+                    System.out.print("@");
+                }
             }
+
+            System.out.println();
         }
 
-        return rombe;
-    }
+        // La siguiente función construye el resto del rombo
 
-    private static String getLiniaDe(int huecos, char caracter) {
+        for (int fil = (eje - 2); fil >= 0; fil--) {
 
-        String linea = "";
+            for (int col2 = 1; col2 <= clave; col2++) {
 
-        for (int i = 0; i < huecos; i++) {
-            linea += caracter;
+                if ((col2 < (eje - fil)) || (col2 > (eje + fil))) {
+                    System.out.print(" ");
+                } else {
+                    System.out.print("@");
+                }
+            }
+
+            System.out.println();
         }
-        return linea;
+        scn.close();
     }
-
 }
